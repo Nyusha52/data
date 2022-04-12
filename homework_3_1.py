@@ -2,8 +2,8 @@ import csv
 import json
 import os
 
-if os.path.isfile('example.json'):
-    os.remove('example.json')
+if os.path.isfile('result.json'):
+    os.remove('result.json')
 
 with open("users.json", "r") as f:
     users = json.loads(f.read())
@@ -43,7 +43,7 @@ with open('books.csv', newline='') as f:
     book = (dict(zip(header1, row)) for row in reader)
     count_book = len_book % users_len
     count_user = 0
-    with open("example.json", "a") as e:
+    with open("result.json", "a") as e:
         s = "[ \n"
         e.write(s)
     for i in range(users_len):
@@ -51,7 +51,7 @@ with open('books.csv', newline='') as f:
             one_user_short = create_one_user(users_list)
             for j in range((len_book // users_len) + 1):
                 one_user_short_book = add_book(book, one_user_short)
-            with open("example.json", "a") as e:
+            with open("result.json", "a") as e:
                 s = json.dumps(one_user_short_book, indent=4)
                 s1 = s + ", \n"
                 e.write(s1)
@@ -60,7 +60,7 @@ with open('books.csv', newline='') as f:
             one_user_short = create_one_user(users_list)
             for j in range((len_book // users_len)):
                 one_user_short_book = add_book(book, one_user_short)
-            with open("example.json", "a") as e:
+            with open("result.json", "a") as e:
                 s = json.dumps(one_user_short_book, indent=4)
                 if count_user == users_len - 1:
                     s1 = s + "\n"
@@ -69,6 +69,6 @@ with open('books.csv', newline='') as f:
                 e.write(s1)
             count_user += 1
 
-    with open("example.json", "a") as e:
+    with open("result.json", "a") as e:
         s = "]"
         e.write(s)

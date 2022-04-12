@@ -31,6 +31,6 @@ for i in range(len(lst_books)):
         count = 0
         new_user_list[count]["books"].append(lst_books[i])
 
-with open("example.json", "w") as f:
+with open("result.json", "w") as f:
     s = json.dumps(new_user_list, indent=4)
     f.write(s)
