@@ -27,6 +27,7 @@ def create_one_user(users_list):
                       "books": []}
     return one_user_short
 
+
 def add_book(book, one_user_short):
     one_book = next(book)
     one_user_short["books"].append({'title': one_book['Title'], 'author': one_book['Author'],
@@ -34,6 +35,8 @@ def add_book(book, one_user_short):
                                     "genre": one_book['Genre']})
 
     return one_user_short
+
+
 with open('books.csv', newline='') as f:
     reader = csv.reader(f)
     header1 = next(reader)
@@ -41,8 +44,8 @@ with open('books.csv', newline='') as f:
     count_book = len_book % users_len
     count_user = 0
     with open("example.json", "a") as e:
-        s1 = "[ \n"
-        e.write(s1)
+        s = "[ \n"
+        e.write(s)
     for i in range(users_len):
         if count_user < count_book:
             one_user_short = create_one_user(users_list)
@@ -67,5 +70,5 @@ with open('books.csv', newline='') as f:
             count_user += 1
 
     with open("example.json", "a") as e:
-        s1 = "]"
-        e.write(s1)
+        s = "]"
+        e.write(s)
