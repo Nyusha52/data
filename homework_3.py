@@ -11,7 +11,6 @@ with open("users.json", "r") as f:
     users = json.loads(f.read())
 
 users_list = users[0:]
-user_name = users_list[0]['name']
 
 new_user_list = []
 for i in range(len(users_list)):
